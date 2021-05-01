@@ -1,0 +1,13 @@
+{
+  "gameState" : 0,
+  "playerCount" : 1,
+  "players" : {
+    "Player1" : {
+      "health" : 0,
+      "name" : "Name",
+      "rank" : 0,
+      "x" : 0,
+      "y" : 0
+    }
+  }
+}
