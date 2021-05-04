@@ -4,11 +4,13 @@ class Form{
         this.button = createButton('Submit');
         this.title = createElement('h2','Shootingame');
         this.greeting = createElement('h4');
+        this.reset = createButton('reset');
     }
     display(){
         this.input.position(windowWidth/2,windowHeight/2);
         this.button.position(displayWidth/2,displayHeight/2+50);
         this.title.position(displayWidth/2,0);
+        this.reset.position(displayWidth,0);
         this.button.mousePressed(()=>{
             this.input.hide();
             this.button.hide();
@@ -20,5 +22,18 @@ class Form{
             this.greeting.html('Welcome '+player.name);
             this.greeting.position(windowWidth/2,windowHeight/2);
         });
+        this.reset.mousePressed(()=>{
+            game.updateState(0);
+            database.ref("/").update({
+                players : null
+            });
+            player.updateCount(0);
+            location.reload();
+        });
+    }
+    hideForm(){
+        this.greeting.hide();
+        this.input.hide();
+        this.button.hide();
     }
 }

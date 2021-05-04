@@ -1,9 +1,9 @@
 class Player{
     constructor(){
         this.name = null;
-        this.x = 0;
-        this.y = 0;
-        this.health = 0;
+        this.x = random(0,width);
+        this.y = random(0,height);
+        this.health = random(0,10);
         this.index = null;
         this.rank = 0;
     }
@@ -26,6 +26,12 @@ class Player{
             y : this.y,
             health : this.health,
             rank : this.rank
+        });
+    }
+    static getPlayerInfo(){
+        var ref = database.ref("players");
+        ref.on("value",(data)=>{
+            allPlayers = data.val();
         });
     }
 }
