@@ -4,11 +4,12 @@ const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 const Constraint = Matter.Constraint;
 var database;
-var playerCount,gameState=0,player,game,form,allPlayers,objects=[],bullets = [];
+var playerCount,gameState=0,player,game,form,allPlayers,objects=[],foods = [];
 var bg;
 
 function preload(){
   bg = loadImage("images/bg.jpg");
+  angleMode(DEGREES);
 }
 
 function setup() {
@@ -30,7 +31,7 @@ function setup() {
 function draw() {
   Engine.update(engine);
   //background(255);
-  if(playerCount > 4 && keyIsDown(UP_ARROW)){
+  if(playerCount > 1 && keyIsDown(UP_ARROW)){
     game.updateState(1);
   }
 
@@ -45,6 +46,8 @@ function detectCollision(bodyA,bodyB) {
   var posB = bodyB.body.position;
   var distance = dist(posA.x,posA.y,posB.x,posB.y);
   if(distance <= bodyA.r + bodyB.r ){
-    Matter.Body.setStatic(bodyB.body,false);
+    return true;
+  }else{
+    return false;
   }
 }

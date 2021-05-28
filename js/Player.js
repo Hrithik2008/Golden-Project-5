@@ -3,9 +3,10 @@ class Player{
         this.name = null;
         this.x = random(0,width);
         this.y = random(0,height);
-        this.health = random(0,10);
+        this.health = 10;
         this.index = null;
         this.rank = 0;
+        this.angle = 0;
     }
     getCount(){
         var playerC = database.ref("playerCount");
@@ -25,7 +26,8 @@ class Player{
             x : this.x,
             y : this.y,
             health : this.health,
-            rank : this.rank
+            rank : this.rank,
+            angle : this.angle
         });
     }
     static getPlayerInfo(){
